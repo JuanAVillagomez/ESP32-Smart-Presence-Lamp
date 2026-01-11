@@ -1,0 +1,177 @@
+/* --- 1. Base & Font Setup --- */
+body {
+    /* The Google Font we added */
+    font-family: 'Nunito', sans-serif;
+    
+    /* Your baby blue background */
+    background-color: #f0f8ff; 
+    
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    
+    /* For the animated background */
+    position: relative;
+    overflow-x: hidden; /* Hide horizontal scroll */
+}
+
+h1, h3 {
+    text-align: center;
+    color: #4a4a4a;
+}
+h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #ffccd5; /* Pink underline */
+    padding-bottom: 10px;
+}
+
+/* Centers all the cards */
+.main-container {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative; /* Sits on top of the background */
+    z-index: 2;
+}
+
+/* --- 2. The "Card" Layout Style --- */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+/* --- 3. The "Live UI Heart" Style --- */
+.live-heart-icon {
+    width: 80px;
+    height: 80px;
+    fill: #cccccc; /* Default grey color */
+    transition: fill 0.5s ease; /* Makes color changes smooth */
+}
+
+/* Layout for the status card */
+.status-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.status-text p {
+    margin: 4px 0;
+    font-weight: bold;
+}
+.status-text span {
+    font-weight: normal;
+    color: #555;
+}
+
+/* --- 4. Better Buttons & Inputs --- */
+button {
+    background-color: #ffccd5; /* Your pink color */
+    color: #5c3b3b; /* Dark, readable pink text */
+    border: none;
+    border-radius: 20px; /* "Pill" shape */
+    padding: 10px 18px;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 5px;
+    flex-grow: 1; /* Makes buttons fill space */
+}
+
+button:hover {
+    transform: translateY(-2px); /* "Pop" effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the rows of controls */
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.mode-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Modern color picker */
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 60px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 2px solid #eee;
+}
+input[type="color"]::-moz-color-swatch {
+    border-radius: 10px;
+    border: 2px solid #eee;
+}
+
+/* Modern slider */
+.slider-row {
+    font-weight: bold;
+    color: #555;
+}
+input[type="range"] {
+    flex-grow: 1;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.connection-status {
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
+    padding: 10px;
+}
+
+
+/* --- 5. Animated Heart Background --- */
+.heart-container {
+    position: fixed; /* Stays fixed behind everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts it behind the .main-container */
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px; /* Start off-screen */
+    font-size: 24px;
+    color: #ffdde1; /* Lighter pink for background */
+    
+    /* The animation magic! */
+    animation: floatUp 15s linear infinite;
+    opacity: 0;
+}
+
+/* The animation that makes them float up */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 0.7; /* Fade in and stay visible */
+    }
+    100% {
+        transform: translateY(-100vh); /* Float to the top */
+        opacity: 0; /* Fade out */
+    }
+}
